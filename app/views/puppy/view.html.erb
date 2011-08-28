@@ -1,15 +1,27 @@
 
  <div class="field">
   <% if @puppy.owner%>   
-    <%=  @puppy.owner.email + " has the puppy" %>
+    <%if @puppy.owner==current_user || (current_user && current_user.is_admin) %>
+    <div> You have the Puppy!</div>
+    <div >Comments</div>
+    <div><%=@puppy.comments%></div> 
+    
+    <%= button_to 'Leave the puppy','/puppy/leave' %> 
+    <%else%>   
+    <div> <%=  @puppy.owner.email + " has the puppy" %></div>
+    <div >Comments</div>
+    <div><%=@puppy.comments%></div> 
+   
+    <%end%>
   <% else %>
-    <%=   "The puppy is available" %>
+   <div> <%=   "The puppy is available" %></div>
+    <% if current_user %>
+       <%=form_for @puppy,:url=>{:action=>"take"},  do |f|	 %>
+        <%=f.label :comments %>
+        <%=f.text_field :comments %>
+        <%= f.submit 'Take the puppy'%>     
+      <%end%> 
+    <%end %>
   <% end %>
-<% form_tag do %>  
-  <% if current_user %>
-      <%= button_to "Check out the puppy","puppy/take" %>
-dfkjsldfjkl
-         
-  <% end %>
-<%end %>
+  
 </div>

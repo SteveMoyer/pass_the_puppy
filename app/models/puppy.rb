@@ -1,3 +1,4 @@
 class Puppy <ActiveRecord::Base
-  belongs_to :owner, :class_name =>"User"
+ attr_accessible :comments
+ belongs_to :owner, :class_name =>"User"
 end 
