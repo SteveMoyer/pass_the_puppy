@@ -11,7 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110827031722) do
+ActiveRecord::Schema.define(:version => 20110828014104) do
+
+  create_table "puppies", :force => true do |t|
+    t.integer "owner_id"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email"

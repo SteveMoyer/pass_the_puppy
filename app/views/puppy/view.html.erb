@@ -1,0 +1,12 @@
+
+ <div class="field">
+  <% if @puppy.owner%>   
+    <%=  @puppy.owner.email + " has the puppy" %>
+  <% else @current_user %>
+    <%=   "The puppy is available" %>
+  <% end %>
+  <% if current_user %>
+      <% link_to "Check out the puppy", :controller=> "puppy",:action=>:take %>
+
+  <% end %>
+</div>
