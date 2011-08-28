@@ -2,11 +2,14 @@
  <div class="field">
   <% if @puppy.owner%>   
     <%=  @puppy.owner.email + " has the puppy" %>
-  <% else @current_user %>
+  <% else %>
     <%=   "The puppy is available" %>
   <% end %>
+<% form_tag do %>  
   <% if current_user %>
-      <% link_to "Check out the puppy", :controller=> "puppy",:action=>:take %>
-
+      <%= button_to "Check out the puppy","puppy/take" %>
+dfkjsldfjkl
+         
   <% end %>
+<%end %>
 </div>

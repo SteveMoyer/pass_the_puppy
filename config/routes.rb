@@ -6,9 +6,8 @@ PassThePuppy::Application.routes.draw do
   root :to => "puppy#view"
   resources :users
   resources :sessions
-  resource :puppy do
-    get 'view'
-    put 'take'
-    put 'leave'
-  end
+  match  "puppy/view"
+  match "puppy/take"
+  match "puppy/leave"
+  
 end
