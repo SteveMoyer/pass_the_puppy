@@ -27,14 +27,16 @@ a {
 }
 
 #container {
-  width: 75%;
+  width: 600px;
   margin: 0 auto;
   background-color: #FFF;
   padding: 20px 40px;
   border: solid 1px black;
   margin-top: 20px;
 }
-
+#main_content {
+  padding: 5px;
+}
 #flash_notice, #flash_error, #flash_alert {
   padding: 5px 8px;
   margin: 10px 0;
@@ -88,4 +90,15 @@ form .field, form .actions {
 
 .error_messages ul {
   margin: 15px 0;
+}
+
+.user_area
+{
+  float:top;
+  width: 400px;
+  text-align:left;
+  border-width: 2px;
+  border-color: #CF000;
+  border-style: solid;
+  padding: 3px;	
 }
