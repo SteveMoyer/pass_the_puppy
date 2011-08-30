@@ -102,3 +102,11 @@ form .field, form .actions {
   border-style: solid;
   padding: 3px;	
 }
+.comment_box
+{
+  border-width: 2px;
+  border-color: #CF000;
+  border-style: solid;
+  min-height:100px;
+  padding: 3px;	
+}

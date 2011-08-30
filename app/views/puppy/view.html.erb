@@ -2,18 +2,19 @@
  <div class="field">
 
 
-<%=image_tag @can_take_puppy? "/images/puppy.jpg":"/images/nopuppy.jpg" %>
+<%=image_tag @puppy_is_available? "/images/puppy.jpg":"/images/nopuppy.jpg" %>
 
    <div><%=@puppy_status%></div>
-   <div>Comments</div>
+   <div class="comment_box"><div>Comments:</div>
     <%if @can_take_puppy%>
       <%=form_for @puppy,:url=>{:action=>"take"},  do |f|%>
-       <%=f.text_field :comments %>
-        <%= f.submit 'Take the puppy'%>     
+       <%=f.text_area :comments,:size => "50x5"  %>
+       <div><%= f.submit 'Take the puppy'%></div>
       <%end%>
     <% else%> 
-      <div><%=@puppy.comments%></div> 
+      <%=@puppy.comments%>
     <%end%>
+  </div>
     <%if @can_leave_puppy%> 
       <%= button_to 'Leave the puppy','/puppy/leave' %> 
     <%end %>

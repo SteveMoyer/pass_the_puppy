@@ -15,8 +15,9 @@ class PuppyController < ApplicationController
   @puppy = get_the_puppy
   @puppy_status = get_puppy_status(@puppy)
   @puppy_comments = @puppy.comments
-  @can_take_puppy =  current_user && @puppy.owner==nil
-  @can_leave_puppy = current_user &&@puppy.owner &&(current_user==@puppy.owner ||current_user.is_admin)
+  @puppy_is_available= @puppy.owner==nil
+  @can_take_puppy =  current_user && @puppy_is_available
+  @can_leave_puppy = current_user && @puppy.owner &&(current_user==@puppy.owner ||current_user.is_admin)
  end
  def take
   @puppy =get_the_puppy
