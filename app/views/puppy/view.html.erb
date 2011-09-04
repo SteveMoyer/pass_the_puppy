@@ -1,7 +1,22 @@
 
  <div class="field">
 
+<script language='javascript'>
+Ext.onReady(function(){
+  var editor = new Ext.Window({
+    id:'puppyWindow',
+    title:'Puppy Status',
+    width:600,
+    height:1000,
+    layout:'fit'
+    children:{
 
+	}
+    
+    });
+    editor.show();
+});
+</script>
 <%=image_tag @puppy_is_available? "/images/puppy.jpg":"/images/nopuppy.jpg" %>
 
    <div><%=@puppy_status%></div>
