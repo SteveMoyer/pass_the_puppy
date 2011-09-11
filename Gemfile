@@ -10,6 +10,7 @@ gem 'pg'
 end
 group :development,:test do
   gem 'sqlite3'
+  gem 'simplecov', '>= 0.4.0', :require => false
 end
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

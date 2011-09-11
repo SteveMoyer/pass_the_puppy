@@ -83,6 +83,9 @@ GEM
     rdoc (3.9.4)
     rest-client (1.6.7)
       mime-types (>= 1.16)
+    simplecov (0.5.0)
+      simplecov-html (~> 0.5.0)
+    simplecov-html (0.5.0)
     sprockets (2.0.0.beta.15)
       hike (~> 1.2)
       rack (~> 1.0)
@@ -106,5 +109,6 @@ DEPENDENCIES
   jquery-rails
   pg
   rails (= 3.1.0rc6)
+  simplecov (>= 0.4.0)
   sqlite3
   therubyracer
