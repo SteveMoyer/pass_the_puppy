@@ -1,5 +1,4 @@
-class PuppyController < ApplicationController
- View_Puppy_Path ='/puppy/view'
+class PuppiesController < ApplicationController
 
  def get_puppy_status(puppy)
   if puppy.owner
@@ -8,19 +7,19 @@ class PuppyController < ApplicationController
     "The puppy is available."
   end   
  end
- def get_the_puppy()
-     Puppy.find_by_id(1)
- end
- def view
-  @puppy = get_the_puppy
+ def show
+  @puppy = Puppy.find(params[:id])
   @puppy_status = get_puppy_status(@puppy)
   @puppy_comments = @puppy.comments
   @puppy_is_available= @puppy.owner==nil
   @can_take_puppy =  current_user && @puppy_is_available
   @can_leave_puppy = current_user && @puppy.owner &&(current_user==@puppy.owner ||current_user.is_admin)
  end
+def index
+  @puppies = Puppy.all
+end 
  def take
-  @puppy =get_the_puppy
+  @puppy =Puppy.find(params[:id])
   if !@puppy.owner
    @puppy.owner =current_user
    @puppy.update_attributes( params[:puppy])
@@ -29,11 +28,11 @@ class PuppyController < ApplicationController
   else
    flash.now.alert= 'The puppy is not available'
   end
-  redirect_to View_Puppy_Path
+  redirect_to @puppy
   
  end
  def leave
-  @puppy=get_the_puppy
+  @puppy=Puppy.find(params[:id])
   if @puppy.owner==current_user || current_user.is_admin
    @puppy.owner=nil
    @puppy.comments=nil 
@@ -43,7 +42,7 @@ class PuppyController < ApplicationController
  else
   flash.now.alert = 'To leave the puppy you must have the puppy.  If you think the puppy is lost contact an admin'
  end
- redirect_to  View_Puppy_Path
+ redirect_to  @puppy
  
  end 
 end

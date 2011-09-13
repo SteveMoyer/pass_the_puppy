@@ -1,8 +1,7 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.0rc6'
+gem 'rails', '3.1.0'
 #gem 'execjs'
-gem 'therubyracer'
 gem 'jquery-rails'
 gem 'heroku'
 group :production do

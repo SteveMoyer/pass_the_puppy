@@ -3,11 +3,13 @@ PassThePuppy::Application.routes.draw do
   get "login" => "sessions#new", :as => "login"
   get "signup" => "users#new", :as => "signup"
  
-  root :to => "puppy#view"
+  root :to => "puppies#index"
   resources :users
   resources :sessions
-  match  "puppy/view"
-  match "puppy/take"
-  match "puppy/leave"
-  
+  resources :puppies do
+     member do
+      put 'take'
+      put 'leave'
+    end
+  end
 end

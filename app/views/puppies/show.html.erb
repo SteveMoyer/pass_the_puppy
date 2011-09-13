@@ -16,10 +16,13 @@ Ext.onReady(function(){
     editor.show();
 });
 </script>
+<div>Currently viewing status of the <%=@puppy.name%> puppy. Do not modify this resource unless you have the puppy.</div>
+
+<div id="status_div"><%=@puppy_status%></div>
+ 
 <%=image_tag @puppy_is_available? "/images/puppy.jpg":"/images/nopuppy.jpg" %>
 
-   <div><%=@puppy_status%></div>
-   <div class="comment_box"><div>Comments:</div>
+  <div class="comment_box"><div>Comments:</div>
     <%if @can_take_puppy%>
       <%=form_for @puppy,:url=>{:action=>"take"},  do |f|%>
        <%=f.text_area :comments,:size => "50x5"  %>
@@ -30,7 +33,7 @@ Ext.onReady(function(){
     <%end%>
   </div>
     <%if @can_leave_puppy%> 
-      <%= button_to 'Leave the puppy','/puppy/leave' %> 
+      <%= button_to 'Leave the puppy',leave_puppy_path( @puppy.id), { :method=>:put}%> 
     <%end %>
 
   
