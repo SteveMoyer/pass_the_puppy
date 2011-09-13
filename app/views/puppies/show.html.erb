@@ -1,0 +1,40 @@
+<div class="field">
+
+<script language='javascript'>
+Ext.onReady(function(){
+  var editor = new Ext.Window({
+    id:'puppyWindow',
+    title:'Puppy Status',
+    width:600,
+    height:1000,
+    layout:'fit'
+    children:{
+
+	}
+    
+    });
+    editor.show();
+});
+</script>
+<div>Currently viewing status of the <%=@puppy.name%> puppy. Do not modify this resource unless you have the puppy.</div>
+
+<div id="status_div"><%=@puppy_status%></div>
+ 
+<%=image_tag @puppy_is_available? "/images/puppy.jpg":"/images/nopuppy.jpg" %>
+
+  <div class="comment_box"><div>Comments:</div>
+    <%if @can_take_puppy%>
+      <%=form_for @puppy,:url=>{:action=>"take"},  do |f|%>
+       <%=f.text_area :comments,:size => "50x5"  %>
+       <div><%= f.submit 'Take the puppy'%></div>
+      <%end%>
+    <% else%> 
+      <%=@puppy.comments%>
+    <%end%>
+  </div>
+    <%if @can_leave_puppy%> 
+      <%= button_to 'Leave the puppy',leave_puppy_path( @puppy.id), { :method=>:put}%> 
+    <%end %>
+
+  
+</div>

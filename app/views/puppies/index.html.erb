@@ -1,0 +1,13 @@
+<div class="field">
+
+<table class="puppylisting"><thead>
+<tr><th>Puppy</th><th>Status</th></tr>
+<tbody>
+<% @puppies.each() do |puppy|%>
+<tr><td><%=link_to puppy.name, puppy%></td><td><%=puppy.status%></td></tr>
+<%end %>
+</tbody>
+</thead>
+</table>
+  
+</div>

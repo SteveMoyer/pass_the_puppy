@@ -5,6 +5,7 @@
    <%= stylesheet_link_tag    "/extjs/resources/css/ext-all.css" %>
     <%= javascript_include_tag    "/extjs/ext-base-debug.js" %>
    <%= javascript_include_tag    "/extjs/ext-all-debug.js" %>
+  <%= stylesheet_link_tag "application" %>
  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
@@ -15,7 +16,8 @@
     Hello <%=current_user.email%> <%=link_to 'Log out','/logout'%>
   <%else%>
     Guest <%=link_to 'Log in','/login'%>  <%=link_to 'Register','/users/new'%>
-
+  <%end %>
+  <%=link_to 'Home','/'%>
   </div>
    <div id="main_content">
     <% flash.each do |name, msg| %>
