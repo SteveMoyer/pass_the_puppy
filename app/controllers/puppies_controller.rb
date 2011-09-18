@@ -7,6 +7,20 @@ class PuppiesController < ApplicationController
     "The puppy is available."
   end   
  end
+ def new 
+  @puppy=Puppy.new
+
+ end
+ def create
+  @puppy = Puppy.new params[:puppy]
+  if  @puppy.save
+    redirect_to  @puppy
+  else
+    @errors= @puppy.errors 
+    render :new
+  end
+ 
+ end 
  def show
   @puppy = Puppy.find(params[:id])
   @puppy_status = get_puppy_status(@puppy)

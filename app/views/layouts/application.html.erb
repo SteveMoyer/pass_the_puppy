@@ -20,7 +20,8 @@
   <%=link_to 'Home','/'%>
   </div>
    <div id="main_content">
-    <% flash.each do |name, msg| %>
+ <% flash[:error]= @errors.full_messages.to_sentence unless (!@errors || @errors.empty?)%>
+   <% flash.each do |name, msg| %>
       <%= content_tag :div, msg, :id => "flash_#{name}" %>
     <% end %>
     <%= yield %>
