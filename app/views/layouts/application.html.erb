@@ -13,7 +13,8 @@
  <div id="container">
   <div class="user_area">
   <% if current_user%> 
-    Hello <%=current_user.email%> <%=link_to 'Log out','/logout'%>
+    Hello <%=current_user.email%> <%=link_to 'Log out','/logout'%> <%=link_to 'change_password','/change_password'%>
+
   <%else%>
     Guest <%=link_to 'Log in','/login'%>  <%=link_to 'Register','/users/new'%>
   <%end %>
