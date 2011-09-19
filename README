@@ -1,4 +1,20 @@
+Pass The Puppy is an application which provides for distrubuted check-in tokens
 
+Using this pass-the-puppy app and heroku's free rails hosting you can have your own distrubuted token application up and running in minutes.
+
+Setup Instructions:
+
+  1. Sign up for a free Heroku account
+  2. Create an application
+  3. Clone the application locally from github
+  4. Alter the db.seed file to your liking(optional)
+  5. Follow Heroku's instructions for pushing your application
+  6. Switch off your web dyno and heroku exec rake db:seed (or use a rails console to create an admin user
+  7. Switch your web dyno back on
+  8. Create checkin tokens and have the team take the token to perform a given task and leave it when they are done.
+
+
+ 
 
 
 
