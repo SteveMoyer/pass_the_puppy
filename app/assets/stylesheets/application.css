@@ -25,6 +25,18 @@ a {
   height: 0;
   overflow: hidden;
 }
+.header{
+ 
+}
+.banner{
+font-size:250%; 
+}
+
+.user_area
+{
+  text-align:right;
+  padding: 3px;	
+}
 
 #container {
   width: 600px;
@@ -35,7 +47,7 @@ a {
   margin-top: 20px;
 }
 #main_content {
-  padding: 5px;
+  padding-top:25px;
 }
 #flash_notice, #flash_error, #flash_alert {
   padding: 5px 8px;
@@ -107,26 +119,13 @@ tr:nth-child(even)    { background-color:#fff; }
 .error_messages ul {
   margin: 15px 0;
 }
-
-.user_area
-{
-  float:top;
-  width: 400px;
-  text-align:left;
-  border-width: 2px;
-  border-color: #CF000;
-  border-style: solid;
-  padding: 3px;	
-}
 .comment_box
 {
-  border-width: 2px;
-  border-color: #CF000;
-  border-style: solid;
   min-height:100px;
   padding: 3px;	
 }
 #status_div{
 padding:5px;
 font-weight:bold;
+font-size:125%;
 }

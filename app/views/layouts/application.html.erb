@@ -11,22 +11,27 @@
 </head>
 <body class="<%= params[:controller] %>">
  <div id="container">
-  <div class="user_area">
-  <% if current_user%> 
-    Hello <%=current_user.email%> <%=link_to 'Log out','/logout'%> <%=link_to 'change_password','/change_password'%>
+ <div class="header"><div class="user_area">
+<% if current_user%> 
+    Hello <%=current_user.email%> <%=link_to 'Log out','/logout'%> <%=link_to 'Change Password','/change_password'%>
 
   <%else%>
     Guest <%=link_to 'Log in','/login'%>  <%=link_to 'Register','/users/new'%>
   <%end %>
-  <%=link_to 'Home','/'%>
   </div>
-   <div id="main_content">
- <% flash[:error]= @errors.full_messages.to_sentence unless (!@errors || @errors.empty?)%>
+  <div class="banner"> Pass The Puppy</div>
+</div>
+ <div id="main_content">
+ <%=link_to 'Return to Puppy List','/'unless @puppylist%><br/><br/>
+
+  <% flash[:error]= @errors.full_messages.to_sentence unless (!@errors || @errors.empty?)%>
    <% flash.each do |name, msg| %>
       <%= content_tag :div, msg, :id => "flash_#{name}" %>
     <% end %>
-    <%= yield %>
+   <%= yield %>
    </div>
+</div>
+
   </div>
 </body>
 </html>

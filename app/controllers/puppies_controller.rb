@@ -30,7 +30,8 @@ class PuppiesController < ApplicationController
   @can_leave_puppy = current_user && @puppy.owner &&(current_user==@puppy.owner ||current_user.is_admin)
  end
 def index
-  @puppies = Puppy.all
+ @puppylist=true
+ @puppies = Puppy.all
 end 
  def take
   @puppy =Puppy.find(params[:id])
