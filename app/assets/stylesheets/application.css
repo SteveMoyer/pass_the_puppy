@@ -39,12 +39,11 @@ font-size:250%;
 }
 
 #container {
-  width: 600px;
   margin: 0 auto;
   background-color: #FFF;
   padding: 20px 40px;
   border: solid 1px black;
-  margin-top: 20px;
+  margin: 20px 20px 20px 20px;
 }
 #main_content {
   padding-top:25px;

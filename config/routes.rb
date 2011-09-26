@@ -15,7 +15,7 @@ PassThePuppy::Application.routes.draw do
   resources :puppies do
      member do
       put 'take'
-      put 'leave'
+      post 'leave'
     end
   end
 end
