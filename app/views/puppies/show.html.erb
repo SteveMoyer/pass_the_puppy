@@ -43,7 +43,7 @@ Ext.onReady(function(){
 <table>
 <thead> <tr><th>User</th><th>time taken</th><th>take comment</th><th>time left</th><th>leave comment</th></tr></thead>
 <tbody>
-<%@puppy.puppy_history.each do |history|%>
+<%@puppy_histories.each do |history|%>
 <tr><td><%=history.useremail %></td><td><%=history.taken_time%></td><td><%=history.take_comment%></td><td><%=history.left_time%></td><td><%=history.leave_comment%></td></tr>
 <%end %>
 </tbody>

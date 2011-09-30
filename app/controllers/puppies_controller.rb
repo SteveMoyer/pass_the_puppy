@@ -25,6 +25,7 @@ class PuppiesController < ApplicationController
   @puppy = Puppy.find(params[:id])
   @puppy_status = get_puppy_status(@puppy)
   @puppy_comments = @puppy.comments
+  @puppy_histories =@puppy.puppy_history.sort_by {|p| p[:time_taken]}.reverse
   @puppy_is_available= @puppy.owner==nil
   @can_take_puppy =  current_user && @puppy_is_available
   @can_leave_puppy = current_user && @puppy.owner &&(current_user==@puppy.owner ||current_user.is_admin)
