@@ -2,9 +2,9 @@
 
 <div>Currently viewing status of the <b><%=@puppy.name%></b> puppy.<br/> Do not modify this resource unless you have the puppy.</div>
 
-<div id="status_div"><%=@puppy.status%></div>
+<div id="status_div"><%=@puppy.status current_user%></div>
  
-<%=image_tag @puppy.is_available? "/images/puppy.jpg":"/images/nopuppy.jpg" %>
+<%=image_tag @puppy.is_available? ? "/images/puppy.jpg":"/images/nopuppy.jpg" %>
 
   <div class="comment_box"><div>Comments:</div>
     <%if @puppy.can_take_puppy? current_user%>
