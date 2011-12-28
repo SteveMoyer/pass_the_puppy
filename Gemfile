@@ -10,6 +10,7 @@ end
 group :development,:test do
   gem 'sqlite3'
   gem 'simplecov', '>= 0.4.0', :require => false
+  gem "selenium-webdriver", "~> 2.8.0"
 end
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

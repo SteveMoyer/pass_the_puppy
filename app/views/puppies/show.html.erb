@@ -2,12 +2,12 @@
 
 <div>Currently viewing status of the <b><%=@puppy.name%></b> puppy.<br/> Do not modify this resource unless you have the puppy.</div>
 
-<div id="status_div"><%=@puppy_status%></div>
+<div id="status_div"><%=@puppy.status%></div>
  
-<%=image_tag @puppy_is_available? "/images/puppy.jpg":"/images/nopuppy.jpg" %>
+<%=image_tag @puppy.is_available? "/images/puppy.jpg":"/images/nopuppy.jpg" %>
 
   <div class="comment_box"><div>Comments:</div>
-    <%if @can_take_puppy%>
+    <%if @puppy.can_take_puppy? current_user%>
       <%=form_for @puppy,:url=>{:action=>"take"},  do |f|%>
        <%=f.text_area :comments,:size => "50x5"  %>
        <div><%= f.submit 'Take the puppy'%></div>
@@ -16,7 +16,7 @@
       <%=@puppy.comments%>
     <%end%>
   </div>
-    <%if @can_leave_puppy%> 
+    <%if @puppy.can_leave_puppy? current_user%> 
       <%= form_tag (leave_puppy_path( @puppy.id)) do -%>
        <%= text_area_tag :left_comment,nil, :size=>"50X5"%>
       <%= submit_tag 'Leave the puppy'%> 
@@ -27,7 +27,7 @@
 <table>
 <thead> <tr><th>User</th><th>time taken</th><th>take comment</th><th>time left</th><th>leave comment</th></tr></thead>
 <tbody>
-<%@puppy_histories.each do |history|%>
+<%@puppy.puppy_history.each do |history|%>
 <tr><td><%=history.useremail %></td><td><%=history.taken_time%></td><td><%=history.take_comment%></td><td><%=history.left_time%></td><td><%=history.leave_comment%></td></tr>
 <%end %>
 </tbody>
