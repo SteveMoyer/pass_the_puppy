@@ -14,25 +14,30 @@
         <div><%= f.submit 'Take the puppy'%></div>
       <%end%>
     <% else%> 
-      Current Owner:
-      <table>
-        <thead> <tr>
-            <th>User</th>
-            <th>time taken</th>
-            <th>take comment</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><%=@puppy.owner.email %></td>
-            <td><%=@puppy.taken_time%></td>
-            <td><%=@puppy.comments%></td>
-          </tr>
-        </tbody>
-      </table>
+      <%if @puppy.owner%>
+        Current Owner:
+        <table>
+          <thead> <tr>
+              <th>User</th>
+              <th>time taken</th>
+              <th>take comment</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><%=@puppy.owner.email %></td>
+              <td><%=@puppy.taken_time%></td>
+              <td><%=@puppy.comments%></td>
+            </tr>
+          </tbody>
+        </table>
+      <%else%>
+        YOU MUST LOG IN TO TAKE THE PUPPY!
+      <%end%>
     <%end%>
   </div>
   <%if @puppy.can_leave_puppy? current_user%> 
+    <div>Comments:</div>
     <%= form_tag (leave_puppy_path( @puppy.id)) do -%>
       <%= text_area_tag :left_comment,nil, :size=>"50X5"%>
       <%= submit_tag 'Leave the puppy'%> 
