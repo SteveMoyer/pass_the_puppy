@@ -15,11 +15,22 @@ class PuppiesController < ApplicationController
   
   def show
     @puppy = Puppy.find(params[:id])
+    @puppy.owner
+    respond_to do |format|
+      format.html 
+      format.xml {render :xml=> @puppy.to_xml}
+      format.json {render :json=> @puppy.as_json({:include =>[:owner]})}
+    end
   end
   
   def index
     @puppylist=true
     @puppies = Puppy.all
+    respond_to do |format|
+      format.html 
+      format.xml {render :xml=> @puppies.to_xml}
+      format.json {render :json=> @puppies.to_json}
+    end
   end 
   
   def take

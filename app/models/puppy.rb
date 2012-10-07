@@ -35,4 +35,7 @@ class Puppy <ActiveRecord::Base
       false
     end
   end
+  def as_json(options={})
+      super(:include =>{:owner=>{:only=>[:email]}})
+  end
 end

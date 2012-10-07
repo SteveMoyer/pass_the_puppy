@@ -9,7 +9,7 @@
   <div class="comment_box">
     <%if @puppy.can_take_puppy? current_user%>
       <div>Comments:</div>
-      <%=form_for @puppy,:url=>{:action=>"take"},  do |f|%>
+      <%=form_for @puppy,:url=>{:action=>"take"}  do |f| %>
         <%=f.text_area :comments,:size => "50x5"  %>
         <div><%= f.submit 'Take the puppy'%></div>
       <%end%>
@@ -38,7 +38,7 @@
   </div>
   <%if @puppy.can_leave_puppy? current_user%> 
     <div>Comments:</div>
-    <%= form_tag (leave_puppy_path( @puppy.id)) do -%>
+    <%= form_tag (leave_puppy_path( @puppy.id)) do %>
       <%= text_area_tag :left_comment,nil, :size=>"50X5"%>
       <%= submit_tag 'Leave the puppy'%> 
     <%    end -%>
