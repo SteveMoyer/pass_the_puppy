@@ -1,8 +1,10 @@
 class Puppy <ActiveRecord::Base
   attr_accessible :comments,:name, :taken_time
   belongs_to :owner, :class_name =>"User"
-  validates_uniqueness_of :name, :on=> :create
   has_many :puppy_history
+  validates_uniqueness_of :name, :on=> :create
+  validates_presence_of :name, :on=>:create
+
   def status(user=nil)
     if owner
       (owner ==user ? "You have ": owner.email+" has ") + "the puppy."
@@ -10,19 +12,24 @@ class Puppy <ActiveRecord::Base
       'The puppy is available' 
     end
   end
+
   def is_available?
     owner==nil
   end 
+
   def can_take_puppy?(user)
     user && is_available?
   end
+
   def take(user)
     self.owner=user
     self.taken_time=Time.now
   end
+
   def can_leave_puppy?(user)
     user && owner &&(user==owner ||user.is_admin)
   end
+
   def leave (user, left_comment)
     if can_leave_puppy? user
       ph=PuppyHistory.new
@@ -35,6 +42,7 @@ class Puppy <ActiveRecord::Base
       false
     end
   end
+
   def as_json(options={})
       super(:include =>{:owner=>{:only=>[:email]}})
   end
