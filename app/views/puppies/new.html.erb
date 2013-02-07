@@ -3,7 +3,7 @@
  
 
   <div class="comment_box"><div>Enter a name for the new puppy:</div>
-      <%=form_for @puppy,:url=>{:action=>"create"},  do |f|%>
+      <%=form_for @puppy, :url=>{:action=>"create"}  do |f|%>
        <%=f.text_field :name  %>
        <div><%= f.submit 'Create puppy'%></div>
       <% end %>
