@@ -11,6 +11,14 @@ class PuppyTest <ActiveSupport::TestCase
     puppy.name ="blah"
     assert puppy.save
   end
+  
+  test "take sets owner and time" do
+    puppy = Puppy.new
+    user = User.new
+    puppy.take user
+    assert puppy.owner==user
+    assert puppy.taken_time!=nil
+  end 
 
   test "should remove owner on leave and add history" do
     puppy = Puppy.new
