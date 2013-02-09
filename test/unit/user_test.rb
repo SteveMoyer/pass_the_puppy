@@ -8,7 +8,7 @@ class UserTest <ActiveSupport::TestCase
 
   test "should save with password" do
 	user =User.new
-        user.password ="blah"
+  user.password ="blah"
 	assert user.save
   end
 

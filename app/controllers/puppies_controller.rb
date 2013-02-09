@@ -46,8 +46,7 @@ class PuppiesController < ApplicationController
     else
       flash.now.alert= 'The puppy is not available'
     end
-    redirect_to @puppy
-
+    render "show"
   end
  
   def leave
@@ -58,7 +57,6 @@ class PuppiesController < ApplicationController
     else
       flash.now.alert = 'To leave the puppy you must have the puppy.  If you think the puppy is lost contact an admin'
     end
-    redirect_to  @puppy
-
+    render "show"
   end 
 end

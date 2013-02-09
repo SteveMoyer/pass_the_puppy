@@ -1,0 +1,12 @@
+availdog:
+  name: fido
+ 
+stevesdog:
+  name: bowser
+  owner: steve
+  comments: bathing
+
+otherdog:
+  name: lassie
+  owner: other
+  comments: walking the dog

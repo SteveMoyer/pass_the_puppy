@@ -1,9 +1,9 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+steve:
+  email:  bruinseve@ptp.com
+  password_digest: <%= BCrypt::Password.create("ptp")%>
+  is_admin: true
 
-one:
-  email: MyString
-  password_digest: MyString
-
-two:
-  email: MyString
-  password_digest: MyString
+other:
+  email: other@ptp.com  
+  password_digest: <%= BCrypt::Password.create("ptp")%>
