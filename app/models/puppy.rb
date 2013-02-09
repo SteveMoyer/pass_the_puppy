@@ -1,4 +1,5 @@
 class Puppy <ActiveRecord::Base
+  self.include_root_in_json = false
   attr_accessible :comments,:name, :taken_time
   belongs_to :owner, :class_name =>"User"
   has_many :puppy_history
