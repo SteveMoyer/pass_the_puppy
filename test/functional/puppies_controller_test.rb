@@ -4,7 +4,7 @@ class PuppiesControllerTest < ActionController::TestCase
   test "non admin can take puppy that is available" do
     put :take, {:id => puppies(:availdog).id}, {:user_id => users(:other).id}
     assert_response :success
-    assert_equal 'You have taken the puppy', flash[:alert]
+    assert_equal 'You have taken the puppy', flash[:notice]
   end
 
   test "cannot take puppy that is not available" do
@@ -22,13 +22,13 @@ class PuppiesControllerTest < ActionController::TestCase
   test "non-admin can leave puppy that is theirs" do
     post :leave, {:id => puppies(:otherdog).id}, {:user_id => users(:other).id}
     assert_response :success
-    assert_equal 'You returned the puppy.', flash[:alert]
+    assert_equal 'You returned the puppy.', flash[:notice]
   end
 
   test "admin can leave puppy that is not theirs" do
     post :leave, {:id => puppies(:otherdog).id}, {:user_id => users(:steve).id}
     assert_response :success
-    assert_equal 'You returned the puppy.', flash[:alert]
+    assert_equal 'You returned the puppy.', flash[:notice]
   end
 
   test "create should render show when no errors" do

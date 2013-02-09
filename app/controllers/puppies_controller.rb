@@ -39,7 +39,7 @@ class PuppiesController < ApplicationController
       @puppy.update_attributes( params[:puppy])
       @puppy.take(current_user)
       if @puppy.save!
-        flash.now.alert= 'You have taken the puppy'
+        flash.now.notice= 'You have taken the puppy'
       else
         flash.alert='You didn\'t get the puppy'
       end
@@ -53,7 +53,7 @@ class PuppiesController < ApplicationController
     @puppy=Puppy.find(params[:id])
     if @puppy.leave current_user, params[:left_comment]
       @puppy.save
-      flash.now.alert = 'You returned the puppy.'
+      flash.now.notice = 'You returned the puppy.'
     else
       flash.now.alert = 'To leave the puppy you must have the puppy.  If you think the puppy is lost contact an admin'
     end

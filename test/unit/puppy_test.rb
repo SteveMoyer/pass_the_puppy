@@ -34,7 +34,7 @@ class PuppyTest <ActiveSupport::TestCase
     puppy = puppies(:stevesdog)
     json = puppy.as_json()
     puts json
-    assert_equal json["puppy"][:owner]["email"], users(:steve).email
+    assert_equal json[:owner]["email"], users(:steve).email
   end 
 end
 
