@@ -2,11 +2,8 @@
 <html>
 <head>
   <title>Pass the Puppy</title>
-   <%= stylesheet_link_tag    "/extjs/resources/css/ext-all.css" %>
-    <%= javascript_include_tag    "/extjs/ext-base-debug.js" %>
-   <%= javascript_include_tag    "/extjs/ext-all-debug.js" %>
   <%= stylesheet_link_tag "application" %>
- <%= javascript_include_tag "application" %>
+ <%= javascript_include_tag :application %>
   <%= csrf_meta_tags %>
 </head>
 <body class="<%= params[:controller] %>">
