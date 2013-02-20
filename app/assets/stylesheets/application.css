@@ -4,7 +4,7 @@
  * the top of the compiled file, but it's generally better to create a new file per style scope.
  *= require_self
  *= require_tree .
-*/
+ */
 
 body {
   background-color: #4B7399;
@@ -26,10 +26,10 @@ a {
   overflow: hidden;
 }
 .header{
- 
+
 }
 .banner{
-font-size:250%; 
+  font-size:250%; 
 }
 
 .user_area
@@ -39,11 +39,12 @@ font-size:250%;
 }
 
 #container {
+  min-width: 250;
+  max-width: 900px;
   margin: 0 auto;
   background-color: #FFF;
   padding: 20px 40px;
   border: solid 1px black;
-  margin: 20px 20px 20px 20px;
 }
 #main_content {
   padding-top:25px;
@@ -75,19 +76,19 @@ form .field, form .actions {
 .fieldWithErrors {
   display: inline;
 }
- table {
+table {
   border: solid 1px black;
   border-collapse:collapse;
 }
 table thead th{
-font-weight:bold;
-background-color:lightgray;
-border: solid 1px black;
-padding:5px;	
+  font-weight:bold;
+  background-color:lightgray;
+  border: solid 1px black;
+  padding:5px;	
 }
 table td{
-padding:5px;
-border: solid 1px black
+  padding:5px;
+  border: solid 1px black
 }
 
 tr:nth-child(odd)    { background-color:#99ccff; }
@@ -124,7 +125,7 @@ tr:nth-child(even)    { background-color:#fff; }
   padding: 3px;	
 }
 #status_div{
-padding:5px;
-font-weight:bold;
-font-size:125%;
+  padding:5px;
+  font-weight:bold;
+  font-size:125%;
 }
