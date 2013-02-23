@@ -10,16 +10,16 @@
  <div id="container">
  <div class="header"><div class="user_area">
 <% if current_user%> 
-    Hello <%=current_user.email%> <%=link_to 'Log out','/logout'%> <%=link_to 'Change Password','/change_password'%>
+  Hello <%=current_user.email%> <%=link_to 'Log out',destroy_user_session_path,:method=> :delete%> <%=link_to 'Change Password',new_user_password_path%>
 
   <%else%>
-    Guest <%=link_to 'Log in','/login'%>  <%=link_to 'Register','/users/new'%>
+    Guest <%=link_to 'Log in',new_user_session_path%>  <%=link_to 'Register',new_user_registration_path%>
   <%end %>
   </div>
   <div class="banner"> Pass The Puppy</div>
 </div>
  <div id="main_content">
- <%=link_to 'Return to Puppy List','/'unless @puppylist%><br/><br/>
+ <%=link_to 'Return to Puppy List','/' unless @puppylist%><br/><br/>
 
   <% flash[:error]= @errors.full_messages.to_sentence unless (!@errors || @errors.empty?)%>
    <% flash.each do |name, msg| %>

@@ -4,16 +4,5 @@
 // It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
 // the compiled file.
 //= require jquery
+//= require jquery_ujs
 
-$(window).resize(function(){
-  $('#container').css({
-      position:'absolute',
-      left: ($(window).width() - $('#container').outerWidth())/2,
-      top: ($(window).height() - $('#container').outerHeight())/2
-  });
-
-});
-
-$(function() {
-  $(window).resize();
-});
