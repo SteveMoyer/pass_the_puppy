@@ -1,6 +1,6 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-steve:
-  email:  bruinseve@ptp.com
+admin:
+  email:  admin@ptp.com
   encrypted_password: sdkjflfsfkjd
   is_admin: true
 

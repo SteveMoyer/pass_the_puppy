@@ -1,12 +1,12 @@
-availdog:
+availpup:
   name: fido
  
-stevesdog:
+adminpup:
   name: bowser
-  owner: steve
+  owner: admin
   comments: bathing
 
-otherdog:
+otherpup:
   name: lassie
   owner: other
   comments: walking the dog
