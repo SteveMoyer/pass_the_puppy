@@ -4,7 +4,7 @@ gem 'rails', '3.1.0'
 gem 'jquery-rails'
 gem 'heroku'
 gem 'devise'
-
+gem 'haml-rails'
 group :production do
   gem 'pg'
 end
