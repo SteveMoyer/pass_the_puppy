@@ -1,0 +1,65 @@
+.field
+  %div 
+    Currently viewing status of the 
+    %b
+      =@puppy.name 
+    puppy.
+    %br 
+    Do not modify this resource unless you have the puppy.
+  #status_div
+    = @puppy.status current_user
+  =image_tag @puppy.is_available? ? "/images/puppy.jpg":"/images/nopuppy.jpg"
+  .comment_box
+    -if @puppy.can_take_puppy? current_user
+      %div
+        Comments:
+        =form_for @puppy, :url=>{:action=>"take"}  do |f| 
+          =f.text_area :comments,:size => "50x5"
+          = f.submit 'Take the puppy'
+    - else
+      - if @puppy.owner
+        Current Owner:
+        %table
+          %thead
+            %tr
+              %th User
+              %th time taken
+              %th take comment
+          %tbody
+            %tr
+              %td 
+                = @puppy.owner.email 
+              %td 
+                = @puppy.taken_time
+              %td 
+                = @puppy.comments
+      - else
+        YOU MUST LOG IN TO TAKE THE PUPPY!
+  - if @puppy.can_leave_puppy? current_user
+    %div 
+      Comments:
+      = form_tag (leave_puppy_path( @puppy.id)) do 
+        = text_area_tag :left_comment,nil, :size=>"50X5"
+        = submit_tag 'Leave the puppy'
+  %div Recent Activity(Last 20)
+  %table
+    %thead
+      %tr
+        %th User
+        %th take comment
+        %th leave comment
+        %th time taken
+        %th time left
+    %tbody
+      - @puppy.puppy_history.each do |history|
+        %tr
+          %td 
+            =history.useremail
+          %td 
+            =history.take_comment
+          %td 
+            =history.leave_comment
+          %td 
+            =history.taken_time
+          %td 
+            =history.left_time
