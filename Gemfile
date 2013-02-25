@@ -12,7 +12,6 @@ end
 group :development,:test do
   gem 'spork'
   gem 'rspec-rails'
-  gem 'test-unit'
   gem 'sqlite3'
   gem 'simplecov', '>= 0.4.0', :require => false
   gem "selenium-webdriver", ">= 2.8.0"
