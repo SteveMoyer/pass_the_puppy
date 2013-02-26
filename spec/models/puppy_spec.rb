@@ -12,6 +12,7 @@ describe Puppy do
     end
 
   end
+
   context "when taken" do
     it "sets user and time" do
       subject.take user
@@ -19,6 +20,7 @@ describe Puppy do
       subject.taken_time.should_not be_nil
     end 
   end
+
   context "when left" do 
     it "removes owner and comment and adds history" do
       subject.owner = user
@@ -31,22 +33,24 @@ describe Puppy do
       subject.puppy_history.size.should == 1
     end 
   end
+
   it "should include owner email in json" do
     subject.owner=user
     json = subject.as_json()
     json[:owner]["email"].should == user.email
   end 
- describe "status" do
-   it "returns available when there is no owner" do
-     subject.status.should include("available")
-   end
-   it "returns you have the puppy when you are the owner" do
-     subject.owner =users(:admin)
-     subject.status(users(:admin)).should include("You have")
-   end
-   it "returns owner has the puppy when someone else owns it" do
-     subject.owner =users(:admin)
-     subject.status(users(:other)).should include("has")
-   end   
- end
+
+  describe "status" do
+    it "returns available when there is no owner" do
+      subject.status.should include("available")
+    end
+    it "returns you have the puppy when you are the owner" do
+      subject.owner =users(:admin)
+      subject.status(users(:admin)).should include("You have")
+    end
+    it "returns owner has the puppy when someone else owns it" do
+      subject.owner =users(:admin)
+      subject.status(users(:other)).should include("has")
+    end   
+  end
 end
