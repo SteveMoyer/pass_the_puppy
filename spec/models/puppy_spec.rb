@@ -36,5 +36,17 @@ describe Puppy do
     json = subject.as_json()
     json[:owner]["email"].should == user.email
   end 
-
+ describe "status" do
+   it "returns available when there is no owner" do
+     subject.status.should include("available")
+   end
+   it "returns you have the puppy when you are the owner" do
+     subject.owner =users(:admin)
+     subject.status(users(:admin)).should include("You have")
+   end
+   it "returns owner has the puppy when someone else owns it" do
+     subject.owner =users(:admin)
+     subject.status(users(:other)).should include("has")
+   end   
+ end
 end
