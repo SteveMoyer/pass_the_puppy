@@ -5,12 +5,15 @@ gem 'jquery-rails'
 gem 'heroku'
 gem 'devise'
 gem 'haml-rails'
+
 group :production do
   gem 'pg'
 end
 
 group :development,:test do
+  gem 'factory_girl_rails'
   gem 'spork'
+  gem 'capybara'
   gem 'rspec-rails'
   gem 'sqlite3'
   gem 'simplecov', '>= 0.4.0', :require => false

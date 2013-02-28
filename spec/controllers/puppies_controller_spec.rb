@@ -3,7 +3,11 @@ describe PuppiesController do
   include Devise::TestHelpers
 
   context "admin is signed in" do
-    let (:current_user) {users(:admin)}
+    let (:current_user) {
+      FactoryGirl.create(:user) do |u|
+        u.is_admin=true
+      end
+    }
 
     before :each do
       sign_in current_user
@@ -20,7 +24,7 @@ describe PuppiesController do
   end
 
   context "non-admin is signed in" do
-    let (:current_user) {users(:other)}
+    let (:current_user) { FactoryGirl.create(:user) }
     before :each do
       sign_in current_user
       controller.stub(:current_user).and_return(current_user)
