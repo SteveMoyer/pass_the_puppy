@@ -3,22 +3,18 @@ describe PuppiesController do
   include Devise::TestHelpers
 
   context "admin is signed in" do
-    let (:current_user) {
-      FactoryGirl.create(:user) do |u|
-        u.is_admin=true
-      end
-    }
+    let (:current_user) {FactoryGirl.create(:admin) }
 
     before :each do
       sign_in current_user
       controller.stub(:current_user).and_return(current_user)
     end
-
     describe :leave do
-     it "succeeds when they are not the owner" do
-        post :leave, {:id => puppies(:otherpup).id}
-        response.should be_success
-        flash[:notice].should == 'You returned the puppy.'
+      it "succeeds when they are not the owner" do
+        post :leave, {:id => 
+          FactoryGirl.create(:puppy, :owner=> FactoryGirl.create( :user))         }
+          response.should be_success
+          flash[:notice].should == 'You returned the puppy.'
       end
     end
   end
@@ -32,24 +28,25 @@ describe PuppiesController do
 
     describe :take do
       it "it succeeds when available" do
-        get :take, {:id=>puppies(:availpup)}
+        get :take, {:id=>FactoryGirl.create(:puppy).id}
         response.should be_success
         flash[:notice].should == "You have taken the puppy"
       end
 
       it "fails when not available" do
-        get :take, {:id=>puppies(:adminpup)}
+        get :take, {:id=>FactoryGirl.create(:puppy, :owner=>FactoryGirl.create(:admin)).id}
         flash[:alert].should == 'The puppy is not available'
       end
-
+    end
+    describe :leave do 
       it "succeeds when they are the owner" do
-        post :leave, {:id => puppies(:otherpup).id}
+        post :leave, {:id => FactoryGirl.create(:puppy, :owner=>current_user).id}
         response.should be_success
         flash[:notice].should == 'You returned the puppy.'
       end
 
       it "fails when they are not the owner" do
-        post :leave, {:id => puppies(:adminpup).id}
+        post :leave, {:id => FactoryGirl.create(:puppy).id}
         response.should be_success
         flash[:alert].should == 'To leave the puppy you must have the puppy.  If you think the puppy is lost contact an admin'
       end
@@ -85,7 +82,7 @@ describe PuppiesController do
 
     describe :show do
       it "assigns puppy and responds with html" do
-        get :show, {:id => puppies(:adminpup).id }
+        get :show, {:id => FactoryGirl.create(:puppy).id }
         assert_response :success
         assert_not_nil assigns(:puppy)
       end 

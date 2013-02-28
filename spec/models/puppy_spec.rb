@@ -1,7 +1,9 @@
 require 'spec_helper'
 
 describe Puppy do
-  let(:user){ User.new :email =>'test@test.com'}
+  let(:user){FactoryGirl.create (:user) }
+  let(:admin) {FactoryGirl.create(:admin)}
+
   describe "validation of new" do
     it "fails without a name" do
       should have(1).error_on (:name)
@@ -45,12 +47,12 @@ describe Puppy do
       subject.status.should include("available")
     end
     it "returns you have the puppy when you are the owner" do
-      subject.owner =users(:admin)
-      subject.status(users(:admin)).should include("You have")
+      subject.owner =admin
+      subject.status(admin).should include("You have")
     end
     it "returns owner has the puppy when someone else owns it" do
-      subject.owner =users(:admin)
-      subject.status(users(:other)).should include("has")
+      subject.owner =admin
+      subject.status(user).should include("has")
     end   
   end
 end
