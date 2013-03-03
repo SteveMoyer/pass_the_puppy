@@ -1,4 +1,6 @@
+require_relative 'base_page'
 class PuppyView
+  include BasePage
   include Capybara::DSL
   include RSpec::Matchers
   def take_puppy (comment=nil)
