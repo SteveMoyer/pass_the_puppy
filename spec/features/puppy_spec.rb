@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'capybara/rspec'
 
 describe "the checkout process" do
-  context "when signed in as a non-admin", :js=>true  do
+  context "when signed in as a non-admin" do
     let(:login_page){LoginPage.new}
     let(:puppy_list){PuppyList.new}
     let(:puppy_view){PuppyView.new}
