@@ -2,6 +2,7 @@ class Puppy <ActiveRecord::Base
   self.include_root_in_json = false
   attr_accessible :comments,:name, :taken_time
   belongs_to :owner, :class_name =>"User"
+  belongs_to :organization
   has_many :puppy_history
   validates_uniqueness_of :name, :on=> :create
   validates_presence_of :name, :on=>:create
@@ -47,4 +48,5 @@ class Puppy <ActiveRecord::Base
   def as_json(options={})
       super(:include =>{:owner=>{:only=>[:email]},:puppy_history=>{:include=>{:user=>{:only=>[:email]}}}})
   end
+
 end

@@ -11,13 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130221222020) do
+ActiveRecord::Schema.define(:version => 20130305195000) do
+
+  create_table "organizations", :force => true do |t|
+    t.string "name"
+  end
 
   create_table "puppies", :force => true do |t|
     t.integer  "owner_id"
     t.text     "comments"
     t.string   "name"
     t.datetime "taken_time"
+    t.integer  "organization_id"
   end
 
   create_table "puppy_histories", :force => true do |t|
@@ -43,6 +48,7 @@ ActiveRecord::Schema.define(:version => 20130221222020) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.integer  "organization_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

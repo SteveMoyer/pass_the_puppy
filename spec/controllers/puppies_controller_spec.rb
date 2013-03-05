@@ -20,6 +20,7 @@ describe PuppiesController do
   end
 
   context "non-admin is signed in" do
+    let (:organization) { FactoryGirl.create(:organization) }
     let (:current_user) { FactoryGirl.create(:user) }
     before :each do
       sign_in current_user
@@ -61,6 +62,11 @@ describe PuppiesController do
       it "renders new when  errors" do
         post :create,{:puppy=> {}}
         assert :success
+      end
+      it "assigns organization or user to puppy" do
+        current_user.organization= organization
+        post :create,{:puppy=> {:name=>"bluto"}}
+        Puppy.find_by_name("bluto").organization.should == organization
       end
     end
 

@@ -6,6 +6,7 @@ class PuppiesController < ApplicationController
   
   def create
     @puppy = Puppy.new params[:puppy]
+    @puppy.organization = current_user.organization
     if  @puppy.save
       redirect_to  @puppy
     else
