@@ -1,5 +1,7 @@
+require_relative 'base_page'
 require 'capybara/rspec'
 class PuppyList
+  include BasePage
   include Capybara::DSL
   include RSpec::Matchers
   def view_puppy(puppy)
