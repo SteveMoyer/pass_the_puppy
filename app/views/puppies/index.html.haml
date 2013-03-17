@@ -3,14 +3,10 @@
     %thead
       %tr
         %th
+        %th
           Puppy
         %th
           Status
     %tbody
-      - @puppies.each() do |puppy|
-        %tr
-          %td
-            =link_to puppy.name, puppy
-          %td
-            =puppy.status
-  = link_to "Create a new puppy", new_puppy_path
+      = render partial:"puppy_row",collection: @puppies
+    = link_to "Create a new puppy", new_puppy_path, remote: true, id: "new_link"

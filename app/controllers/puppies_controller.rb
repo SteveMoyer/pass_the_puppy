@@ -8,10 +8,16 @@ class PuppiesController < ApplicationController
     @puppy = Puppy.new params[:puppy]
     @puppy.organization = current_user.organization
     if  @puppy.save
-      redirect_to  @puppy
+      respond_to do |format|
+        format.html {redirect_to  @puppy}
+        format.js
+      end
     else
       @errors= @puppy.errors 
-      render :new
+      respond_to do |format|
+        format.html {render :new}
+        format.js
+      end
     end
   end 
   

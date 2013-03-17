@@ -2,6 +2,4 @@
   .comment_box
     %div 
       Enter a name for the new puppy:
-      =form_for @puppy, :url=>{:action=>"create"}  do |f|
-        =f.text_field :name
-        =f.submit 'Create puppy'
+      =render partial: @puppy

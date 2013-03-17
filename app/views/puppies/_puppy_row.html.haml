@@ -1,0 +1,8 @@
+%tr
+  %td
+    =image_tag puppy_row.is_available? ? "/images/puppy_small.jpg":"/images/nopuppy_small.jpg"
+  %td
+    =link_to puppy_row.name, puppy_row
+  %td
+    =puppy_row.status
+

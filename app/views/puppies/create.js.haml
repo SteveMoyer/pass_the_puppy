@@ -1,0 +1,4 @@
+:plain
+  $('#new_puppy').remove();
+  $('#new_link').show();
+  $('.puppylisting').append('#{j render(partial: "puppy_row",:locals=> {puppy_row: @puppy})}')
